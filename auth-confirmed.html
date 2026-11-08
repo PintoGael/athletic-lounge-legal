@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <title>Athletic Lounge · Email confirmation</title>
+  <script>
+    // Supabase can return session tokens in the fragment. Never send them to
+    // another service, persist them, render them or forward them into the app.
+    // Confirmation is performed by Supabase before redirecting here; users
+    // sign in normally in the app. Remove query + fragment before any links.
+    const confirmationParams = new URLSearchParams(location.hash.slice(1));
+    const confirmationQuery = new URLSearchParams(location.search);
+    const confirmationFailed = confirmationParams.has('error') || confirmationParams.has('error_code')
+      || confirmationQuery.has('error') || confirmationQuery.has('error_code');
+    history.replaceState(null, '', location.pathname);
+    document.addEventListener('DOMContentLoaded', () => {
+      if (confirmationFailed) {
+        document.getElementById('status').textContent = 'This confirmation link could not be completed';
+        document.getElementById('instructions').textContent = 'The link may have expired or already been used. Open Athletic Lounge and try signing in. If your email is not confirmed, enter your email on the Sign in screen and choose Resend confirmation email. No password is needed to request a link. Wait at least 60 seconds between requests and check your spam folder. Already confirmed? Sign in normally. If your installed version has no resend button, update to a version with this option or contact support; do not delete your account or use password reset as a confirmation retry.';
+      }
+    });
+  </script>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #0b0b0b; color: #f5f5f5; }
+    body { margin: 0; min-height: 100svh; display: grid; place-items: center; }
+    main { max-width: 34rem; margin: 1.25rem; padding: clamp(1.25rem, 5vw, 2.5rem); background: #151515; border: 1px solid #393939; border-radius: 1rem; }
+    .brand { color: #ff7a00; font-weight: 700; letter-spacing: .06em; }
+    h1 { font-size: clamp(1.65rem, 5vw, 2.2rem); line-height: 1.15; }
+    p { line-height: 1.65; color: #ccc; }
+    a { color: #ff9b40; } a:focus-visible { outline: 2px solid #ff9b40; outline-offset: 4px; }
+    nav { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">ATHLETIC LOUNGE</div>
+    <h1 id="status">Return to the app to sign in</h1>
+    <p id="instructions">If you arrived here after confirming your email, open Athletic Lounge and sign in with the email and password you used to create your account. You can close this browser tab.</p>
+    <p>No password, code or verification link needs to be shared with support. This page does not sign you in or change your password.</p>
+    <noscript><p>For privacy, close this tab after reading these instructions; do not copy or share the address from your confirmation email.</p></noscript>
+    <nav aria-label="Account information">
+      <a href="privacy-policy.html" rel="noreferrer">Privacy policy</a>
+      <a href="account-deletion.html" rel="noreferrer">Account deletion</a>
+    </nav>
+  </main>
+</body>
+</html>
