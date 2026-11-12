@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Athletic Lounge service demonstrations</title>
+  <style>
+    body { margin: 0; background: #0b0b0b; color: #f5f5f5; font: 18px/1.5 system-ui, sans-serif; }
+    main { max-width: 760px; margin: 0 auto; padding: 36px 20px; }
+    a { color: #ff9a3d; }
+    h1 { font-size: 1.8rem; line-height: 1.2; }
+    h2 { margin-top: 2rem; font-size: 1.3rem; }
+    video { display: block; width: 100%; max-width: 360px; max-height: 75vh; background: #000; }
+    :target { scroll-margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Athletic Lounge service demonstrations</h1>
+    <p>Actual Android recordings captured on November 11, 2026 using app version 1.20, code 120. The recordings show user-started foreground services and their notification controls. Privacy masks cover unrelated notifications and the saved monitor identifier.</p>
+    <p>The heart-rate monitor was unavailable during capture. Both recordings show connection attempts with zero heart-rate samples.</p>
+    <section id="daily-heart-rate" aria-labelledby="daily-title">
+      <h2 id="daily-title">Daily heart-rate tracking</h2>
+      <p>Enable Track HR trends, move the app to the background, expand its persistent notification, select Stop and return to the app with tracking off.</p>
+      <video controls playsinline preload="metadata" aria-label="Daily heart-rate foreground-service demonstration">
+        <source src="media/daily-hr-service.mp4" type="video/mp4">
+        <a href="media/daily-hr-service.mp4">Open the daily heart-rate recording</a>
+      </video>
+      <p><a href="media/daily-hr-service.mp4">Open the daily heart-rate MP4</a> · 78 seconds · silent</p>
+    </section>
+    <section id="workout" aria-labelledby="workout-title">
+      <h2 id="workout-title">Workout tracking</h2>
+      <p>Start a workout, observe elapsed time, move the app to the background, expand the workout notification and select Stop. The final app view shows the monitor disconnected. The recording includes cuts between foreground and notification segments.</p>
+      <video controls playsinline preload="metadata" aria-label="Workout foreground-service demonstration">
+        <source src="media/workout-service.mp4" type="video/mp4">
+        <a href="media/workout-service.mp4">Open the workout recording</a>
+      </video>
+      <p><a href="media/workout-service.mp4">Open the workout MP4</a> · 65 seconds · silent</p>
+    </section>
+  </main>
+</body>
+</html>
